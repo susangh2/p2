@@ -1,0 +1,36 @@
+.backbtn-container {
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-bottom: 8%;
+}
+
+.main-title {
+  font-size: xx-large;
+  margin-bottom: 10%;
+}
+
+.write-review-main {
+  margin: 5%;
+}
+
+.select-rating-container {
+  margin: 5% 0;
+}
+
+.select-rating-title,
+.write-review-title {
+  margin-bottom: 4%;
+}
+
+.review-q1 {
+  margin-bottom: 5%;
+}
+
+.review-textarea {
+  width: 70%;
+}
+
+.submit-review-btn {
+  margin-top: 15%;
+  height: 3.5vh;
+}

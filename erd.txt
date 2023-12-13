@@ -1,0 +1,115 @@
+# Visualize on https://erd.surge.sh
+# or https://quick-erd.surge.sh
+#
+# Relationship Types
+#  -    - one to one
+#  -<   - one to many
+#  >-   - many to one
+#  >-<  - many to many
+#  -0   - one to zero or one
+#  0-   - zero or one to one
+#  0-0  - zero or one to zero or one
+#  -0<  - one to zero or many
+#  >0-  - zero or many to one
+#
+////////////////////////////////////
+
+
+users_location
+--------------
+id integer PK
+user_id integer NULL FK >- users.id
+location_id integer NULL FK >- location.id
+
+
+location
+--------
+id integer PK
+district USER
+
+
+users_cuisine
+-------------
+id integer PK
+user_id integer NULL FK >- users.id
+cuisine_id integer NULL FK >- cuisine.id
+
+
+cuisine
+-------
+id integer PK
+country USER
+
+
+users_available_day
+-------------------
+id integer PK
+user_id integer NULL FK >- users.id
+day USER
+breakfast boolean NULL
+brunch boolean NULL
+lunch boolean NULL
+tea boolean NULL
+dinner boolean NULL
+lateNight boolean NULL
+
+
+match_records
+-------------
+id integer PK
+user1_id integer NULL FK >- users.id
+user2_id integer NULL FK >- users.id
+status USER
+status_date varchar(255) NULL
+
+
+users
+-----
+id integer PK
+username varchar(25) NULL
+email varchar(255) NULL
+password_hash char(60) NULL
+avatar varchar(255) NULL
+age integer NULL
+gender USER
+fav_food text NULL
+disliked_food text NULL
+restaurants text NULL
+interests text NULL
+meal_budget USER
+img1 varchar(20) NULL
+img2 varchar(20) NULL
+
+
+private_chatrm
+--------------
+id integer PK
+match_id integer NULL FK >- match_records.id
+
+
+private_msg
+-----------
+id integer PK
+room_id integer NULL FK >- private_chatrm.id
+sender_id integer NULL FK >- users.id
+message varchar(255)
+is_deleted boolean NULL
+
+
+budgets
+-------
+id integer PK
+price_range USER
+
+
+review
+------
+id integer PK
+rated_user_id integer NULL FK >- users.id
+rated_by_user_id integer NULL FK >- users.id
+rating integer NULL
+rating_date varchar(255) NULL
+rating_meal varchar(20) NULL
+comment text NULL
+reply text NULL
+reply_date varchar(255) NULL

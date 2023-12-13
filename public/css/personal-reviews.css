@@ -1,0 +1,49 @@
+.backbtn-container {
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-bottom: 8%;
+}
+
+.user-reviews-main {
+  margin: 5%;
+}
+
+.rating-container {
+  margin-bottom: 7%;
+  display: inline-block;
+  width: 100%;
+}
+
+.average-rating {
+  font-size: xx-large;
+  vertical-align: middle;
+}
+
+.review-count {
+  margin-left: 3%;
+  vertical-align: middle;
+}
+
+.reviewsListTitle {
+  margin-bottom: 3%;
+}
+
+.review-container {
+  border: 2px solid black;
+  padding: 7%;
+  border-radius: 40px;
+  margin-bottom: 7%;
+}
+
+.reviewer-comment {
+  margin-top: 3%;
+}
+
+.reviewer-date {
+  margin-top: 5%;
+  text-align: right;
+}
+
+.fa-reply {
+  margin-top: 10%;
+}

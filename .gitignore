@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+dist
+public/matching-uploads/
+data/
+data.zip
+.vscode/settings.json
+src/routes/matchchatrm.sql
+.env
+uploads

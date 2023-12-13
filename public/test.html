@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/virtual-select.min.css" />
+    <script src="dist/virtual-select.min.js"></script>
+
+    <!-- <script src="https://select2.org/assets/3463b090afc66f573d74febe0935c1f6.js"></script> -->
+    <!-- <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+  </head>
+  <body>
+    <div id="example-select">
+      <select
+        multiple
+        name="native-select"
+        placeholder="Native Select"
+        data-search="false"
+        data-silent-initial-value-set="true"
+      >
+        <option value="1" disabled>Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3" selected>Option 3</option>
+        ...
+      </select>
+    </div>
+    <!-- <select class="js-example-basic-single" name="state">
+      <option value="AL">Alabama</option>
+      ...
+      <option value="WY">Wyoming</option>
+    </select> -->
+    <!-- <script>
+      $(document).ready(function () {
+        $(".js-example-basic-single").select2();
+      });
+    </script> -->
+    <script>
+      VirtualSelect.init({
+        ele: "select",
+      });
+
+      myOptions = [
+        {
+          label: "Options 1",
+          value: "1",
+          alias: "custom label for search",
+          classNames: "customClassNames",
+        },
+        {
+          label: "Options 2",
+          value: "2",
+          description: "custom description for label",
+          customData: "",
+        },
+        { label: "Options 3", value: "3" },
+        ...{ label: "Options 100000", value: "100000" },
+      ];
+
+      VirtualSelect.init({
+        ele: "#example-select",
+        options: myOptions,
+      });
+
+      VirtualSelect.init({
+        ele: "#example-select",
+        options: myOptions,
+        multiple: true,
+      });
+
+      VirtualSelect.init({
+        ele: "#example-select",
+        options: myOptions,
+        search: true,
+        searchGroup: false, // Include group title for searching
+        searchByStartsWith: false, // Search options by startsWith() method
+      });
+
+      VirtualSelect.init({
+        ele: "#example-select",
+        options: myOptions,
+        placeholder: "Select options here",
+      });
+      VirtualSelect.init({
+        ele: "#example-select",
+        options: myOptions,
+        disabledOptions: [1, 1000, 10000],
+      });
+
+      VirtualSelect.init({
+        ele: "#example-select",
+        options: myOptions,
+        hideClearButton: true,
+      });
+    </script>
+  </body>
+</html>

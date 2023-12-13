@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/crh.css" />
+    <title>All Chats</title>
+  </head>
+
+  <body>
+    <div class="chat-container">
+      <header class="chat-header">
+        <h1><i class="fa-solid fa-comment"></i>My Chats</h1>
+      </header>
+
+      <template id="chatContactTemplate">
+        <div class="chatcontact">
+          <a href="/chat.html?id=2" style="flex-grow: 1">
+            <div class="chatcontactleft">
+              <!-- <div class="useravatar">userphoto</div> -->
+              <div class="namewmsg">
+                <div class="username"></div>
+                <div class="lastmsg"></div>
+              </div>
+            </div>
+          </a>
+          <div class="timenrating">
+            <div class="lastmsgtime"></div>
+            <a href="/write-review.html" class="matchreview">
+              <button class="rating">Rating</button>
+            </a>
+          </div>
+        </div>
+      </template>
+
+      <main class="chat-main"></main>
+    </div>
+    <div class="bottom-navbar-container">
+      <nav class="bottom-navbar">
+        <div class="nav-btn">
+          <i class="fa-solid fa-house-chimney fa-2xl nav-home-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-heart-pulse fa-2xl nav-matching-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-users-line fa-2xl nav-pending-matches-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-comment fa-2xl nav-chat-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-user fa-2xl nav-profile-btn"></i>
+        </div>
+      </nav>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+      integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/index.js"></script>
+    <script>
+      // function showContact(pmrm) {
+      //   let node = chatContactTemplate.content.cloneNode(true);
+      //   let a = node.querySelector('a');
+      //   a.href = `/public/chat.html?id=` + pmrm.pcr_id;
+      //   node.querySelector('.matchreview').href = `/write-review.html?name=` + pmrm.user_id
+      //   const usernameDiv = node.querySelector('.username');
+      //   usernameDiv.textContent = `${pmrm.username}`;
+      //   if (pmrm.message || pmrm.created_at) {
+      //     const lastMsgDiv = node.querySelector('.lastmsg');
+      //     lastMsgDiv.textContent = `${pmrm.message}`;
+      //     const lastMsgTimeDiv = node.querySelector('.lastmsgtime');
+      //     let lastDate = new Date(pmrm.created_at).toLocaleString();
+      //     lastMsgTimeDiv.textContent = lastDate;
+      //   }
+      //   document.querySelector('.chat-main').appendChild(node);
+      // }
+
+      function showContact(pmrm) {
+        let node = chatContactTemplate.content.cloneNode(true);
+        let a = node.querySelector("a");
+        a.href = `/public/chat.html?id=` + pmrm.room_id;
+        node.querySelector(".matchreview").href =
+          `/write-review.html?uid=` + pmrm.user_id;
+        const usernameDiv = node.querySelector(".username");
+        usernameDiv.textContent = `${pmrm.username}`;
+        if (pmrm.last_message || pmrm.last_message_time) {
+          const lastMsgDiv = node.querySelector(".lastmsg");
+          lastMsgDiv.textContent = `${pmrm.last_message}`;
+          const lastMsgTimeDiv = node.querySelector(".lastmsgtime");
+          let lastDate = new Date(pmrm.last_message_time).toLocaleString();
+          lastMsgTimeDiv.textContent = lastDate;
+        }
+        document.querySelector(".chat-main").appendChild(node);
+      }
+
+      // function showLastMsg(lastmsg) {}
+
+      async function loadContacts() {
+        let res = await fetch("/chatcontact");
+        let json = await res.json();
+        if (json.error) {
+          console.log(error);
+          return;
+        }
+        for (let chatContact of json) {
+          showContact(chatContact);
+        }
+      }
+      loadContacts();
+    </script>
+  </body>
+</html>

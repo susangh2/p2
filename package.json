@@ -1,0 +1,45 @@
+{
+  "name": "wspproject",
+  "version": "1.0.0",
+  "description": "WSP project with Grace and Susan",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev src/server.ts",
+    "format": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/express-session": "^1.17.7",
+    "@types/formidable": "^2.0.6",
+    "@types/node": "^20.4.5",
+    "@types/pg": "^8.10.2",
+    "cast.ts": "^1.7.1",
+    "grant": "^5.4.21",
+    "prettier": "^3.0.0",
+    "quick-erd": "^4.9.5",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.6",
+    "xlsx": "^0.18.5"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/nodemailer": "^6.4.9",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "formidable": "^2.1.2",
+    "listening-on": "^2.0.9",
+    "nodemailer": "^6.9.4",
+    "path": "^0.12.7",
+    "pg": "^8.11.2",
+    "populate-env": "^2.0.0",
+    "socket.io": "^4.7.2",
+    "sweetalert2": "^11.7.21"
+  }
+}

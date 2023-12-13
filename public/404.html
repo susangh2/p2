@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="/public/css/404.css" />
+    <style>
+      body {
+        margin: 0;
+      }
+      main {
+        background-color: beige;
+      }
+      h1,
+      p,
+      div {
+        padding: 1rem;
+      }
+      pre {
+        display: inline-block;
+        outline: 1px solid darkred;
+        padding: 0.5rem;
+      }
+      code {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Page Not Found</h1>
+      <div>
+        Current Page:
+        <pre><code></code></pre>
+      </div>
+      <p>
+        Please contact admin at
+        <a href="mailto:admin@tecky.io">admin@tecky.io</a>
+      </p>
+      <p>
+        Back to
+        <a href="/">home page</a>
+      </p>
+    </main>
+    <script>
+      document.querySelector("code").textContent = location.pathname;
+    </script>
+  </body>
+</html>

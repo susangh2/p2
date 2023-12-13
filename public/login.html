@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scale=1.0"
+    />
+    <title>login</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      media="all"
+      href="https://cpwebassets.codepen.io/assets/editor/themes/twilight-6f8ac17ab59c6a35418c771b49ae7fccd93dced93d280f0691cf3054e80bcc82.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css"
+      integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="/public/css/login.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="overlay">
+      <!-- LOGN IN FORM by Omar Dsoky -->
+      <form id="login" method="POST" action="/login">
+        <!--   con = Container  for items in the form-->
+        <div class="con">
+          <!--     Start  header Content  -->
+          <header class="head-form">
+            <h2>Log In</h2>
+            <!--     A welcome message or an explanation of the login form -->
+            <p>login here using your username and password</p>
+          </header>
+          <!--     End  header Content  -->
+          <br />
+          <div class="field-set">
+            <!--   user name -->
+            <span class="input-item">
+              <i class="fa fa-user-circle"></i>
+            </span>
+            <!--   user name Input-->
+            <input
+              class="form-input"
+              id="txt-input"
+              name="username"
+              type="text"
+              placeholder="@UserName"
+            />
+
+            <br />
+
+            <!--   Password -->
+
+            <span class="input-item">
+              <i class="fa fa-key"></i>
+            </span>
+            <!--   Password Input-->
+            <input
+              class="form-input"
+              type="password"
+              placeholder="Password"
+              id="pwd"
+              name="password"
+            />
+
+            <!--      Show/hide password  -->
+            <span>
+              <i
+                class="fa fa-eye"
+                aria-hidden="true"
+                type="button"
+                id="eye"
+              ></i>
+            </span>
+
+            <br />
+            <!--        buttons -->
+            <!--      button LogIn -->
+            <input
+              type="submit"
+              class="button"
+              value="submit"
+              onclick="userLogin(event)"
+            />
+          </div>
+
+          <!--   other buttons -->
+          <div class="other">
+            <!--      Forgot Password button-->
+            <input
+              value="Forget PW"
+              class="btn submits frgt-pass button"
+              onclick="forgetPassword()"
+            />
+            <!--     Sign Up button -->
+            <a href="/public/registration.html">
+              <input
+                type="button"
+                class="btn submits sign-up button"
+                value="Sign Up"
+              />
+              <!--         Sign Up font icon -->
+              <!--      End Other the Division -->
+            </a>
+            <div>
+              <a
+                href="/connect/google"
+                class="btn submits sign-up button"
+                text-decoration:
+                none
+              >
+                Google login <i class="fa fa-google" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!--   End Conrainer  -->
+        </div>
+
+        <!-- End Form -->
+      </form>
+    </div>
+    <div class="bottom-navbar-container">
+      <nav class="bottom-navbar">
+        <div class="nav-btn">
+          <i class="fa-solid fa-house-chimney fa-2xl nav-home-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-heart-pulse fa-2xl nav-matching-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-users-line fa-2xl nav-pending-matches-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-comment fa-2xl nav-chat-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-user fa-2xl nav-profile-btn"></i>
+        </div>
+      </nav>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/index.js"></script>
+    <script src="/public/js/login.js"></script>
+  </body>
+</html>

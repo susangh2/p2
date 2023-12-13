@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="loginForm" onsubmit="main(event)">
+      <textarea name="remark"></textarea>
+      <input type="submit" value="asd" />
+    </form>
+    <div id="content"></div>
+    <textarea name="pass"></textarea>
+    <script>
+      //        loginForm.textContent='updated from js'
+      content.textContent = "updated from js";
+      loginForm.remark.value = "updated from js";
+      loginForm.pass.value = "updated from js";
+      async function main(event) {
+        event.preventDefault();
+        content.textContent = "after submit";
+      }
+    </script>
+  </body>
+</html>

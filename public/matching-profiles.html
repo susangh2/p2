@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css"
+      integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css"
+      integrity="sha512-siarrzI1u3pCqFG2LEzi87McrBmq6Tp7juVsdmGY1Dr8Saw+ZBAzDzrGwX3vgxX1NkioYNCFOVC0GpDPss10zQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/css-reset.css" />
+    <link rel="stylesheet" href="./css/filter.css" />
+    <link rel="stylesheet" href="./css/matching.css" />
+    <title>Matching</title>
+  </head>
+  <body>
+    <div id="filterSidepanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <form action="/matching-profiles/filter" method="post" id="filterForm">
+        <p class="filter-title">Gender</p>
+        <ul>
+          <li>
+            <label><input type="radio" name="gender" value="male" />Male</label>
+          </li>
+          <li>
+            <label><input type="radio" name="gender" value="female" />Female</label>
+          </li>
+          <li>
+            <label><input type="radio" name="gender" value="any" checked />Any</label>
+          </li>
+        </ul>
+        <p class="filter-title">Age Range</p>
+        <br />
+        <div class="age-range-container range">
+          <div class="range-slider">
+            <span class="range-selected"></span>
+          </div>
+          <div class="range-input">
+            <input type="range" class="min" min="18" max="60" value="18" step="1" />
+            <input type="range" class="max" min="18" max="60" value="60" step="1" />
+          </div>
+          <div class="range-price">
+            <label for="min">Min</label>
+            <input type="number" name="min" value="18" />
+            <label for="max">Max</label>
+            <input type="number" name="max" value="60" />
+          </div>
+        </div>
+        <p class="filter-title">Cuisine</p>
+        <div class="cuisine-container"></div>
+        <p class="filter-title">Location</p>
+        <div class="location-container"></div>
+        <p class="filter-title">Meal Budget</p>
+        <ul>
+          <li>
+            <label><input type="radio" name="budget" value="below $50" />Below $50</label>
+          </li>
+          <li>
+            <label><input type="radio" name="budget" value="below $100" />Below $100</label>
+          </li>
+          <li>
+            <label><input type="radio" name="budget" value="below $200" />Below $200</label>
+          </li>
+          <li>
+            <label><input type="radio" name="budget" value="below $400" />Below $400</label>
+          </li>
+          <li>
+            <label><input type="radio" name="budget" value="below $800" />Below $800</label>
+          </li>
+          <li>
+            <label><input type="radio" name="budget" value="any" checked />Any</label>
+          </li>
+        </ul>
+        <p class="filter-title">Availability</p>
+        <div class="availability-container">
+          <label><input type="radio" name="date" value="anyDate" class="chosen-any-radio" checked />Any</label>
+          <label><input type="radio" name="date" value="chosenDate" class="chosen-date-radio" />Day</label>
+          <div class="chosen-date-input" style="display: none">
+            <div class="date-container">
+              <input type="date" name="chosenDate" class="chosenDate" />
+              <div class="date-error-message">Please select a date</div>
+            </div>
+            <div class="multiselect" id="meals" multiple="multiple" data-target="multi-0">
+              <div class="title noselect">
+                <span class="text">Select Meal</span>
+                <span class="close-icon">&times;</span>
+                <span class="expand-icon">&plus;</span>
+              </div>
+              <div class="container">
+                <option value="breakfast">Breakfast</option>
+                <option value="brunch">Brunch</option>
+                <option value="lunch">Lunch</option>
+                <option value="tea">Tea</option>
+                <option value="dinner">Dinner</option>
+                <option value="lateNight">Late Night Snack</option>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" value="submit" class="filter-submit-btn">Filter</button>
+      </form>
+    </div>
+    <div class="filter-btn-container">
+      <button class="openbtn" onclick="openNav()">
+        <i class="fa-solid fa-filter fa-lg"></i>
+      </button>
+    </div>
+    <main>
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active fade-img">
+            <img class="d-block object-fit-cover match-profile-container-a" />
+          </div>
+          <div class="carousel-item fade-img">
+            <img class="d-block object-fit-cover match-profile-container-b" />
+          </div>
+          <div class="carousel-item fade-img">
+            <img class="d-block h-100 match-profile-container-c" />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <div class="match-profile-info">
+          <div class="rating rating-circle user-rating"></div>
+        </div>
+        <ul class="profile-list"></ul>
+      </div>
+      <div class="matching-buttons-container">
+        <button type="button" class="reject-btn">
+          <i class="fa-solid fa-xmark fa-2xl"></i>
+        </button>
+        <button type="button" class="like-btn">
+          <i class="fa-solid fa-heart fa-2xl"></i>
+        </button>
+      </div>
+    </main>
+    <div class="bottom-navbar-container">
+      <nav class="bottom-navbar">
+        <div class="nav-btn">
+          <i class="fa-solid fa-house-chimney fa-2xl nav-home-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-heart-pulse fa-2xl nav-matching-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-users-line fa-2xl nav-pending-matches-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-comment fa-2xl nav-chat-btn"></i>
+        </div>
+        <div class="nav-btn">
+          <i class="fa-solid fa-user fa-2xl nav-profile-btn"></i>
+        </div>
+      </nav>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="module" src="./js/matching-profiles-style.js"></script>
+    <script type="module" src="./js/matching-profiles-script.js"></script>
+    <script type="module" src="./js/filter-script.js"></script>
+    <script src="./js/filter-style.js"></script>
+    <script src="./js/index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/solid.min.js"
+      integrity="sha512-s6yNeC6faUgveCQocceGXVia7ciAebyTH7hRNazwZa2FHhnxX22qaGeb9d3a8PUKdnoHo3T3bYI/0ZOjmgWkNg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
